@@ -10,26 +10,24 @@
 # display the name of the game and instructions
 print('LOTTERY')
 print(f' The program will ask you to input 3 numbers from 0-9.\n If you got all the numbers matched, you win.\n Results will be printed below.\n It will also ask if you want to play again.\n')
+import random
 #ask for 3 numerical inputs (0-9)
-def ask3Nums():
+def lottery():
     num1_ = int(input('Enter 1st number: '))
     num2_ = int(input('Enter 2nd number: '))
     num3_ = int(input('Enter 3rd number: '))
-    return num1_, num2_, num3_
+    inputs = f'{num1_}{num2_}{num3_}'
+
 
 #create a function that generates 3 random numbers(0-9) - save as winning numbers
-import random
-
-def winningNums():
     win1_ = int(random.randint(0,9))
     win2_ = int(random.randint(0,9))
     win3_ = int(random.randint(0,9))
-    return win1_, win2_, win3_
+    results = f'{win1_}{win2_}{win3_}'
 
 #evaluate the numbers; if all numbers matched display 'winner'
-def checkNums(inputs_, results_):
     matched = 0
-    for i in inputs_:
+    for i in inputs:
         for r in results:
             if i == r:
                 matched = matched + 1
@@ -38,15 +36,45 @@ def checkNums(inputs_, results_):
         print('\nWinner')
     #if not, display 'you loss'
     else:
-        print('\nYou loss')
-
+        print(f'\nYou loss\nWinning numbers are {win1_}, {win2_}, and {win3_}')
 
 #aks the player after each game if they will play again (y/n are the options)
-# 'y' = another game
-# 'n' = exit game
+    end = 'yes'
+    ans = input('Try again y/n: ')
+    end = ans
+    # 'y' = another game
+    # 'n' = exit game
+    while end[0] == 'y':
+        num1_ = int(input('\nEnter 1st number: '))
+        num2_ = int(input('Enter 2nd number: '))
+        num3_ = int(input('Enter 3rd number: '))
+        inputs = f'{num1_}{num2_}{num3_}'
 
-num1, num2, num3 = ask3Nums()
-inputs = f'{num1}{num2}{num3}'
-win1, win2, win3 = winningNums()
-results = f'{win1}{win2}{win3}'
-checkNums(inputs, results)
+        win1_ = int(random.randint(0,9))
+        win2_ = int(random.randint(0,9))
+        win3_ = int(random.randint(0,9))
+        results = f'{win1_}{win2_}{win3_}'
+    
+        matched = 0
+        for i in inputs:
+            for r in results:
+                if i == r:
+                    matched = matched + 1
+
+        if matched == 3:
+            print('\nWinner')
+        #if not, display 'you loss'
+        else:
+            print(f'\nYou loss\nWinning numbers are {win1_}, {win2_}, and {win3_}')
+            
+        
+        ans = input('Try again y/n: ')
+        end = ans
+
+
+lottery()
+
+        
+
+
+
