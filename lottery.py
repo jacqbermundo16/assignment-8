@@ -27,12 +27,26 @@ def winningNums():
     return win1_, win2_, win3_
 
 #evaluate the numbers; if all numbers matched display 'winner'
-#if not, display 'you loss'
+def checkNums(inputs_, results_):
+    matched = 0
+    for i in inputs_:
+        for r in results:
+            if i == r:
+                matched = matched + 1
+
+    if matched == 3:
+        print('\nWinner')
+    #if not, display 'you loss'
+    else:
+        print('\nYou loss')
+
+
 #aks the player after each game if they will play again (y/n are the options)
 # 'y' = another game
 # 'n' = exit game
 
 num1, num2, num3 = ask3Nums()
+inputs = f'{num1}{num2}{num3}'
 win1, win2, win3 = winningNums()
-print(num1,num2, num3)
-print(win1, win2, win3)
+results = f'{win1}{win2}{win3}'
+checkNums(inputs, results)
