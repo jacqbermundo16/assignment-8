@@ -17,8 +17,15 @@ def ask3Nums():
     num3_ = int(input('Enter 3rd number: '))
     return num1_, num2_, num3_
 
-    
 #create a function that generates 3 random numbers(0-9) - save as winning numbers
+import random
+
+def winningNums():
+    win1_ = int(random.randint(0,9))
+    win2_ = int(random.randint(0,9))
+    win3_ = int(random.randint(0,9))
+    return win1_, win2_, win3_
+
 #evaluate the numbers; if all numbers matched display 'winner'
 #if not, display 'you loss'
 #aks the player after each game if they will play again (y/n are the options)
@@ -26,4 +33,6 @@ def ask3Nums():
 # 'n' = exit game
 
 num1, num2, num3 = ask3Nums()
+win1, win2, win3 = winningNums()
 print(num1,num2, num3)
+print(win1, win2, win3)
